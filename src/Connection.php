@@ -42,7 +42,6 @@ class Connection extends EventEmitter
 
     private $stream;
 
-    private $buffer;
     /**
      * @var Protocal\Parser
      */
