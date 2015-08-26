@@ -19,7 +19,7 @@ class Connection extends EventEmitter
     const STATE_CONNECTING          = 3;
     const STATE_CONNECTED           = 4;
     const STATE_AUTHENTICATED       = 5;
-    const STATE_CLOSEING            = 6;
+    const STATE_CLOSING             = 6;
     const STATE_CLOSED              = 7;
 
     private $loop;
@@ -161,7 +161,7 @@ class Connection extends EventEmitter
                     $callback($this);
                 }
             });
-        $this->state = self::STATE_CLOSEING;
+        $this->state = self::STATE_CLOSING;
     }
 
     /**
@@ -221,7 +221,7 @@ class Connection extends EventEmitter
 
     public function handleConnectionClosed()
     {
-        if ($this->state < self::STATE_CLOSEING) {
+        if ($this->state < self::STATE_CLOSING) {
             $this->state = self::STATE_CLOSED;
             $this->emit('error', [new ConnectionException('mysql server has gone away'), $this]);
         }
