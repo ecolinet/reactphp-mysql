@@ -235,7 +235,7 @@ class Connection extends EventEmitter
         } elseif ($this->state >= self::STATE_CONNECTING && $this->state <= self::STATE_AUTHENTICATED) {
             return $this->executor->enqueue($command);
         } else {
-            throw new Exception("Cann't send command");
+            throw new Exception("Can't send command");
         }
     }
 
